@@ -1,0 +1,28 @@
+######POST A TASK
+POST http://localhost:5000/api/tasks
+Content-Type: application/json
+
+{
+  "title":"Task 1",
+  "description":"Task 1 Description",
+  "dueDate":"2024-12-31"
+}
+
+########## GET TASKS
+GET http://localhost:5000/api/tasks
+Content-Type: application/json
+
+########## UPDATE A TASK
+PATCH http://localhost:5000/api/tasks/6656d0253f75441dc70622de
+Content-Type: application/json
+
+{
+  "title":"Task 1",
+  "description":"Task 1 Description",
+  "dueDate":"2024-12-31",
+  "status":"COMPLETED"
+}
+
+######DELETE A TASK 
+DELETE http://localhost:5000/api/tasks/6656d0253f75441dc70622de
+Content-Type: application/json

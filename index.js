@@ -1,14 +1,11 @@
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const Tasks = require("./models/Tasks");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 const connect = async () => {
 	try {
@@ -23,12 +20,11 @@ const connect = async () => {
 
 app.post("/api/tasks", async (req, res) => {
 	try {
-		const { title, description, dueDate, status } = req.body;
-		const createdTask = await new Tasks({
+		const { title, description, dueDate } = req.body;
+		const createdTask = new Tasks({
 			title,
 			description,
 			dueDate,
-			status,
 		});
 		await createdTask.save();
 		res.status(201).json({
@@ -93,7 +89,7 @@ app.delete("/api/tasks/:taskId", async (req, res) => {
 	}
 });
 
-app.listen(3000, () => {
+app.listen(5000, () => {
 	connect();
-	console.log("App is now running on port: [3000]");
+	console.log("App is now running on port: [5000]");
 });
